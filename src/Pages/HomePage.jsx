@@ -1,3 +1,4 @@
+import toast from "react-hot-toast";
 import useAuth from "../Hooks/useAuth";
 
 
@@ -19,6 +20,7 @@ const HomePage = () => {
         UserLogOut()
             .then(() => {
                 console.log("Logout SuccessFull...")
+                toast.success("LogOut Successfull")
             })
             .catch((error) => {
                 console.error(error)
@@ -27,9 +29,9 @@ const HomePage = () => {
 
     return (
         <div>
-            <button onClick={handleGoogleLogin} className="btn btn-outline">Google LogIn</button>
-            <button onClick={handleLogOut} className="btn btn-outline">Google Logout</button>
-            <h1 className="text-6xl">Hi This is home page: {user?.displayName} </h1>
+            <button onClick={handleGoogleLogin} className="btn my-5 btn-outline">Google LogIn</button>
+            <button onClick={handleLogOut} className="btn my-5 mx-10 btn-outline">Google Logout</button>
+            <h1 className="text-6xl my-10">Hi This is home page: {user?.displayName} </h1>
 
         </div>
     );
