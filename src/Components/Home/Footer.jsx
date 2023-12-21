@@ -11,7 +11,7 @@ const Footer = () => {
 
     return (
         <div data-aos="zoom-in-up" data-aos-duration="500">
-            <footer className="footer p-10 bg-base-300 text-base-content">
+            <section className="footer p-10 bg-base-300 text-base-content">
                 <nav data-aos="fade-right" data-aos-duration="1000">
                     <header className="footer-title">Services</header>
                     <a className="link link-hover">Task Creation</a>
@@ -38,25 +38,26 @@ const Footer = () => {
                         </div>
                     </fieldset>
                 </form>
-            </footer>
-            <footer className="footer px-10 py-4 border-t font-semibold bg-base-300 text-base-content border-base-300">
-                <aside data-aos="fade-down" data-aos-duration="1000" className="items-center grid-flow-col">
+            </section>
+            <section data-aos="zoom-in-up" data-aos-duration="500" className="footer px-10 py-4 border-t font-semibold bg-base-300 text-base-content border-base-300">
+                <aside  className="items-center grid-flow-col">
                     <img className='w-[50px]' src="https://i.ibb.co/ryVnX3X/task-icon-2.png" alt="" />
-                    <p>Task Crafter <br />Providing task management services since 1992</p>
+                    <p>Task Crafter <br />Providing task management services since 2023</p>
                 </aside>
-                <nav data-aos="fade-down" data-aos-duration="1000" className="md:place-self-center md:justify-self-end">
+                <nav  className="md:place-self-center md:justify-self-end">
                     <div className="grid grid-flow-col gap-4">
                         <a href='https://github.com/Raziur-Rahman/Task-Crafter-Client' target='blank'><button className='text-3xl'><FaSquareGithub></FaSquareGithub></button></a>
                         <a href='https://www.facebook.com/rajiurrahman.raju.1' target='blank'><button className='text-3xl'><FaSquareFacebook /></button></a>
                         <a href='www.linkedin.com/in/md-raziur-rahman-61602a1b3' target='blank'><button className='text-3xl'><FaLinkedin /></button></a>
                     </div>
                 </nav>
-            </footer>
-            <footer className="footer footer-center p-4 bg-base-300 text-base-content">
-                <aside data-aos="zoom-in" data-aos-duration="1000">
+            </section>
+            {/* data-aos="zoom-in" data-aos-duration="1000" */}
+            <section className="footer footer-center p-4 bg-base-300 text-base-content">
+                <aside >
                     <p>Copyright © 2023 - All right reserved by Task Crafter Ltd</p>
                 </aside>
-            </footer>
+            </section>
 
         </div>
     );
