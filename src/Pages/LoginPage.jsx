@@ -7,7 +7,7 @@ import useAuth from "../Hooks/useAuth";
 
 
 const LoginPage = () => {
-    const { UserGoogleLogin } = useAuth();
+    const { UserGoogleLogin, UserLogIn } = useAuth();
     const navigate = useNavigate();
 
     const handleLogin = event => {
@@ -16,6 +16,16 @@ const LoginPage = () => {
         const email = form.email.value;
         const password = form.password.value;
 
+        UserLogIn(email, password)
+            .then(result => {
+                toast.success("Login Successful!!")
+                console.log(result.user);
+                navigate("/")
+            })
+            .catch(error => {
+                toast.error(`${error.message}`)
+                console.error(error);
+            })
         console.log(email, password)
     }
 
