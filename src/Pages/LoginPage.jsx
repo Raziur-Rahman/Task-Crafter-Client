@@ -4,11 +4,18 @@ import { FcGoogle } from "react-icons/fc";
 import { BiLogoLinkedin } from "react-icons/bi";
 import toast from "react-hot-toast";
 import useAuth from "../Hooks/useAuth";
+import AOS from 'aos';
+import { useEffect } from "react";
 
 
 const LoginPage = () => {
+
     const { UserGoogleLogin, UserLogIn } = useAuth();
     const navigate = useNavigate();
+
+    useEffect(() => {
+        AOS.init()
+    }, [])
 
     const handleLogin = event => {
         event.preventDefault();
@@ -36,7 +43,7 @@ const LoginPage = () => {
                 toast.success("Login Successful!!")
                 console.log(user);
                 navigate('/')
-                
+
             })
             .catch(error => {
                 console.error(error);
@@ -47,11 +54,17 @@ const LoginPage = () => {
     return (
         <div className="hero min-h-screen">
             <div className="hero-content flex-col lg:flex-row bg-base-100 shadow-xl bg-center bg-cover w-4/5 mx-auto min-h-[80vh] rounded-xl">
-                <div>
-                    <img className="hidden lg:block" src="https://i.ibb.co/Sv02Wd2/Login-Page-Gif.gif" alt="" />
+                <div
+                    data-aos="fade-up"
+                    data-aos-duration="1000"
+                >
+                    <img className="hidden w-[500px] lg:block" src="https://i.ibb.co/Sv02Wd2/Login-Page-Gif.gif" alt="" />
                 </div>
-                <div className="card flex-shrink-0 w-full max-w-sm">
-                    <h1 className="text-4xl font-semibold text-center">WelCome to Task Crafter</h1>
+                <div
+                    data-aos="fade-right"
+                    data-aos-duration="1000"
+                    className="card flex-shrink-0 w-full max-w-sm">
+                    <h1 className="text-4xl font-semibold text-center">Welcome to Task Crafter</h1>
                     <form onSubmit={handleLogin} className="card-body pt-2 pb-2">
                         <div className="form-control">
                             <label className="label">

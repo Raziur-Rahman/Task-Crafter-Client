@@ -5,10 +5,14 @@ import { BiLogoLinkedin } from "react-icons/bi";
 import useAuth from "../Hooks/useAuth";
 import toast from "react-hot-toast";
 import { updateProfile } from "firebase/auth";
-import { useState } from "react";
-
+import { useEffect, useState } from "react";
+import AOS from 'aos';
 
 const SignUpPage = () => {
+
+    useEffect(()=>{
+        AOS.init();
+    },[])
 
     const [show, setShow] = useState(false);
     const { UserGoogleLogin, UserRegitration } = useAuth();
@@ -65,11 +69,17 @@ const SignUpPage = () => {
     return (
         <div className="hero min-h-screen bg-logInBg bg-center bg-contain">
             <div className="hero-content bg-base-100 flex-col lg:flex-row-reverse shadow-xl w-4/5 mx-auto min-h-[80vh] rounded-xl">
-                <div>
-                    <img className="hidden lg:block" src="https://i.ibb.co/Sv02Wd2/Login-Page-Gif.gif" alt="" />
+                <div 
+                data-aos="fade-up"
+                data-aos-duration="1000"
+                >
+                    <img className="hidden w-[500px] lg:block" src="https://i.ibb.co/Sv02Wd2/Login-Page-Gif.gif" alt="" />
                 </div>
-                <div className="card flex-shrink-0 w-full max-w-sm">
-                    <h1 className="text-4xl font-semibold text-center">Sign Up</h1>
+                <div 
+                data-aos="fade-left" 
+                data-aos-duration="1000"
+                className="card flex-shrink-0 w-full max-w-sm">
+                    <h1 className="text-4xl font-semibold text-center">Create Account</h1>
                     <form onSubmit={handleCreateUser} className="card-body pt-2 pb-2">
                         <div className="form-control">
                             <label className="label">
