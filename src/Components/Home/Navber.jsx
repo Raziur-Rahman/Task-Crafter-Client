@@ -25,9 +25,7 @@ const Navber = () => {
                     <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
                         <li><Link to='/'>Home</Link></li>
                         <li><Link to='/signup'>SignUp</Link></li>
-                        {
-                            user && <li><Link to='/dashboard/profile'>Get Started</Link></li>
-                        }
+                        <li><Link to='/dashboard/profile'>Get Started</Link></li>
                     </ul>
                 </div>
                 <a className="btn btn-ghost text-xl text-amber-400 hover:text-gray-700">Task Crafter</a>
@@ -36,9 +34,7 @@ const Navber = () => {
                 <ul className="menu menu-horizontal px-1">
                     <li><Link to='/'>Home</Link></li>
                     <li><Link to='/signup'>SignUp</Link></li>
-                    {
-                        user && <li><Link to='/dashboard/profile'>Get Started</Link></li>
-                    }
+                    <li><Link to='/dashboard/profile'>Get Started</Link></li>
                 </ul>
             </div>
             <div className="navbar-end">

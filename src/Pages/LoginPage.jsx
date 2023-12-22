@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FaFacebookF } from "react-icons/fa6";
 import { FcGoogle } from "react-icons/fc";
 import { BiLogoLinkedin } from "react-icons/bi";
@@ -14,6 +14,8 @@ const LoginPage = () => {
     const { UserGoogleLogin, UserLogIn } = useAuth();
     const navigate = useNavigate();
     const axiosPublic = useAxiosPublic();
+    const location = useLocation();
+    const from = location?.state?.from || '/';
 
     useEffect(() => {
         AOS.init()
@@ -29,7 +31,7 @@ const LoginPage = () => {
             .then(result => {
                 toast.success("Login Successful!!")
                 console.log(result.user);
-                navigate("/")
+                navigate(from)
             })
             .catch(error => {
                 toast.error(`${error.message}`)
@@ -48,7 +50,7 @@ const LoginPage = () => {
             .then(res =>{
                 console.log(res.data);
                 toast.success("Login Successfull!!!");
-                navigate('/');
+                navigate(from);
             })
             
         })

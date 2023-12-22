@@ -23,7 +23,7 @@ const Dashboard = () => {
     }
 
     return (
-        <div className="flex flex-col md:flex-row max-w-screen-xl mx-auto">
+        <div className="flex flex-col md:flex-row mx-auto">
             <div className="w-72 p-2 space-y-5 min-h-screen bg-[#D1A054]">
                 <div className="flex flex-col justify-center items-center">
                     <img className="w-[120px] rounded-full" src="https://i.ibb.co/ryVnX3X/task-icon-2.png" alt="" />

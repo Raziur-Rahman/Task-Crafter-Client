@@ -5,6 +5,9 @@ import LoginPage from "../Pages/LoginPage";
 import SignUpPage from "../Pages/SignUpPage";
 import Dashboard from "../Layoutes/Dashboard";
 import Profile from "../Components/Dashboard/Profile";
+import PrivateRoute from "./PrivateRoute";
+import AddTask from "../Components/Dashboard/AddTask";
+import TaskManager from "../Components/Dashboard/TaskManager";
 
 
 const router = createBrowserRouter([
@@ -20,12 +23,20 @@ const router = createBrowserRouter([
     },
     {
         path: '/dashboard',
-        element: <Dashboard></Dashboard>,
+        element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
         children: [
             {
                 path: '/dashboard/profile',
-                element: <Profile></Profile>,
+                element: <PrivateRoute><Profile></Profile></PrivateRoute>,
             },
+            {
+                path: '/dashboard/createtask',
+                element: <PrivateRoute><AddTask></AddTask></PrivateRoute>
+            },
+            {
+                path: '/dashboard/taskmanager',
+                element: <PrivateRoute><TaskManager></TaskManager></PrivateRoute>
+            }
         ]
     },
     {

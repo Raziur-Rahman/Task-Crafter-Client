@@ -13,6 +13,8 @@ const HomePage = () => {
         <div>
             <Navber></Navber>
             <Banner />
+            <Banner />
+            <Banner />
             <h1 className="text-6xl my-10">Hi This is home page: {user?.displayName} </h1>
             <Footer></Footer>
 
