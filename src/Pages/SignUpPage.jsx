@@ -7,6 +7,7 @@ import toast from "react-hot-toast";
 import { updateProfile } from "firebase/auth";
 import { useEffect, useState } from "react";
 import AOS from 'aos';
+import useAxiosPublic from "../Hooks/useAxiosPublic";
 
 const SignUpPage = () => {
 
@@ -17,6 +18,7 @@ const SignUpPage = () => {
     const [show, setShow] = useState(false);
     const { UserGoogleLogin, UserRegitration } = useAuth();
     const navigate = useNavigate();
+    const axiosPublic = useAxiosPublic();
 
     const handleCreateUser = event => {
         event.preventDefault();
@@ -27,42 +29,53 @@ const SignUpPage = () => {
         const photo = form.Photo.value;
 
         UserRegitration(email, password)
-            .then(result => {
-                const user = result.user;
-                if (user?.email) {
-                    updateProfile(user, {
-                        displayName: name,
-                        photoURL: photo
+        .then(userCredential => {
+            const user = userCredential.user;
+            const userinfo = { email: user?.email, name: name, role: "ordinary"};
+            if (user?.email) {
+                updateProfile(user, {
+                    displayName: name,
+                    photoURL: photo
+                })
+                    .then(() => {
+                        axiosPublic.post('/users', userinfo)
+                            .then(res => {
+                                console.log(res.data);
+                                toast.success("User created Successfuly....");
+                                navigate("/")
+                            })
                     })
-                        .then(() => {
-                            toast.success("User created Successfuly...");
-                            navigate("/")
-                        })
-                        .catch((error) => {
-                            console.log(error);
-                            toast.error("Update failed..")
-                        })
-                }
-            })
-            .catch(error => {
-                console.error(error);
-                toast.error("Registration failed...")
-            })
+                    .catch((error) => {
+                        console.log(error);
+                        toast.error("Update failed..")
+                    })
+            }
+        })
+        .catch(error => {
+            console.error(error);
+            toast.error("Registration failed...")
+        })
     }
 
     const handleGoogleLogin = () => {
         UserGoogleLogin()
-            .then(result => {
-                const user = result.user;
-                console.log(user)
-                toast.success("Login Successfull");
-                navigate('/');
+        .then(result => {
+            const user = result.user;
 
-            })
-            .catch(error => {
-                console.error(error);
-                toast.error(`${error.message}`)
-            })
+            const userinfo = { email: user?.email, name: user?.displayName, role: "ordinary" }
+
+            axiosPublic.post('/users', userinfo)
+                .then(res => {
+                    console.log(res.data);
+                    toast.success("Login Successfull!!!");
+                    navigate('/');
+                })
+
+        })
+        .catch(error => {
+            console.error(error);
+            toast.error(`${error.message}`)
+        })
     }
 
 

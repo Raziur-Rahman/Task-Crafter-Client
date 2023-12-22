@@ -6,12 +6,14 @@ import toast from "react-hot-toast";
 import useAuth from "../Hooks/useAuth";
 import AOS from 'aos';
 import { useEffect } from "react";
+import useAxiosPublic from "../Hooks/useAxiosPublic";
 
 
 const LoginPage = () => {
 
     const { UserGoogleLogin, UserLogIn } = useAuth();
     const navigate = useNavigate();
+    const axiosPublic = useAxiosPublic();
 
     useEffect(() => {
         AOS.init()
@@ -38,17 +40,22 @@ const LoginPage = () => {
 
     const handleGoogleLogin = () => {
         UserGoogleLogin()
-            .then(result => {
-                const user = result.user;
-                toast.success("Login Successful!!")
-                console.log(user);
-                navigate('/')
+        .then(result => {
+            const user = result.user;
+            const userinfo = {email: user?.email, name: user?.displayName, role: "ordinary"};
 
+            axiosPublic.post('/users', userinfo )
+            .then(res =>{
+                console.log(res.data);
+                toast.success("Login Successfull!!!");
+                navigate('/');
             })
-            .catch(error => {
-                console.error(error);
-                toast.error(`${error.message}`);
-            })
+            
+        })
+        .catch(error => {
+            console.error(error);
+            toast.error(`${error.message}`);
+        })
     }
 
     return (
