@@ -40,7 +40,7 @@ const AuthProvider = ({ children }) => {
             setUser(currentUser);
             if (currentUser) {
                 const userinfo = { email: currentUser?.email }
-                axios.post('http://localhost:5000/jwt', userinfo)
+                axios.post('https://task-crafter-server.vercel.app/jwt', userinfo)
                     .then(res => {
                         const token = res?.data?.token;
                         localStorage.setItem("access_token", token);

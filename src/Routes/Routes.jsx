@@ -8,6 +8,7 @@ import Profile from "../Components/Dashboard/Profile";
 import PrivateRoute from "./PrivateRoute";
 import AddTask from "../Components/Dashboard/AddTask";
 import TaskManager from "../Components/Dashboard/TaskManager";
+import UpdateTask from "../Components/Dashboard/UpdateTask";
 
 
 const router = createBrowserRouter([
@@ -36,6 +37,10 @@ const router = createBrowserRouter([
             {
                 path: '/dashboard/taskmanager',
                 element: <PrivateRoute><TaskManager></TaskManager></PrivateRoute>
+            },
+            {
+                path: "/dashboard/updateTask/:id",
+                element: <UpdateTask></UpdateTask>
             }
         ]
     },
