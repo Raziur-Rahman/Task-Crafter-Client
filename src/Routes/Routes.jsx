@@ -9,6 +9,7 @@ import PrivateRoute from "./PrivateRoute";
 import AddTask from "../Components/Dashboard/AddTask";
 import TaskManager from "../Components/Dashboard/TaskManager";
 import UpdateTask from "../Components/Dashboard/UpdateTask";
+import ContactUs from "../Components/Home/ContactUs";
 
 
 const router = createBrowserRouter([
@@ -20,6 +21,10 @@ const router = createBrowserRouter([
                 path: '/',
                 element: <HomePage></HomePage>,
             },
+            {
+                path: "/aboutUs",
+                element: <ContactUs></ContactUs>
+            }
         ]
     },
     {

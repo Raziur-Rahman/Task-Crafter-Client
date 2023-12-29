@@ -4,8 +4,11 @@ import { FaEdit, FaTrash } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import useAxiosSecure from './Hooks/useAxiosSecure';
 import toast from 'react-hot-toast';
+// import { useState } from 'react';
 
 const App = ({ item, index, refetch }) => {
+
+  // const [show, setShow] = useState(false);
 
   const axiosSecure = useAxiosSecure();
 
@@ -28,13 +31,15 @@ const App = ({ item, index, refetch }) => {
   return (
     <Draggable draggableId={item._id} index={index}>
       {(provided) => (
-        <div className="bg-amber-500 collapse collapse-plus  my-3"
+        <div className={`bg-amber-500 relative collapse collapse-plus my-3`}
           {...provided.dragHandleProps}
           {...provided.draggableProps}
           ref={provided.innerRef}
         >
-          <input type="radio" name="my-accordion-3" />
-          <div className="collapse-title text-xl font-medium">
+          {/*  ${show ? "collapse-open" : "collapse-close"} */}
+          <input className='w-[50px] absolute top-0 right-0 z-[999] hover:text-amber-900' type="radio" name="my-accordion-3" />
+          {/* <button onClick={()=>setShow(!show)} className=''></button> */}
+          <div className="collapse-title text-xl flex justify-between items-center font-medium">
             {item?.name}
           </div>
           <div className="collapse-content">

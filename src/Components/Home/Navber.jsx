@@ -26,6 +26,7 @@ const Navber = () => {
                         <li><Link to='/'>Home</Link></li>
                         <li><Link to='/signup'>SignUp</Link></li>
                         <li><Link to='/dashboard/profile'>Get Started</Link></li>
+                        <li><Link to='/aboutUs'>About Us</Link></li>
                     </ul>
                 </div>
                 <a className="btn btn-ghost text-xl text-amber-400 hover:text-gray-700">Task Crafter</a>
@@ -35,6 +36,7 @@ const Navber = () => {
                     <li><Link to='/'>Home</Link></li>
                     <li><Link to='/signup'>SignUp</Link></li>
                     <li><Link to='/dashboard/profile'>Get Started</Link></li>
+                    <li><Link to='/aboutUs'>About Us</Link></li>
                 </ul>
             </div>
             <div className="navbar-end">
