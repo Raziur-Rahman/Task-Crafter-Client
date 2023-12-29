@@ -62,7 +62,7 @@ const LoginPage = () => {
 
     return (
         <div className="hero min-h-screen">
-            <div className="hero-content flex-col lg:flex-row bg-base-100 shadow-xl bg-center bg-cover w-4/5 mx-auto min-h-[80vh] rounded-xl">
+            <div className="hero-content flex-col lg:flex-row bg-base-100 shadow-xl w-full md:w-4/5 mx-auto min-h-[80vh] rounded-xl">
                 <div
                     data-aos="fade-up"
                     data-aos-duration="1000"
